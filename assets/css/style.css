@@ -1,0 +1,252 @@
+/**
+ * WP Add to Cart Notifications Styles
+ */
+
+.wp-atc-notification {
+    position: fixed;
+    z-index: 999999;
+    max-width: 400px;
+    width: 90%;
+    animation: wpAtcSlideIn 0.3s ease-out;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.wp-atc-position-top {
+    top: 20px;
+    right: 20px;
+}
+
+.wp-atc-position-bottom {
+    bottom: 20px;
+    right: 20px;
+}
+
+.wp-atc-notification-content {
+    position: relative;
+    padding: 20px;
+}
+
+.wp-atc-notification-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    color: #666;
+    padding: 5px;
+    z-index: 10;
+    transition: color 0.3s ease;
+}
+
+.wp-atc-notification-close:hover {
+    color: #000;
+}
+
+.wp-atc-notification-body {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Layout: Image Left */
+.wp-atc-layout-image_left .wp-atc-notification-image-wrapper {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.wp-atc-layout-image_left .wp-atc-notification-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.wp-atc-layout-image_left .wp-atc-notification-info {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Layout: Image Background */
+.wp-atc-layout-image_background .wp-atc-notification-content {
+    position: relative;
+    min-height: 200px;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.wp-atc-layout-image_background .wp-atc-notification-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.wp-atc-layout-image_background .wp-atc-notification-body {
+    position: relative;
+    z-index: 2;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.wp-atc-layout-image_background .wp-atc-notification-image-wrapper {
+    display: none;
+}
+
+.wp-atc-layout-image_background .wp-atc-notification-info {
+    color: #ffffff;
+    width: 100%;
+}
+
+.wp-atc-layout-image_background .wp-atc-notification-close {
+    color: #ffffff;
+}
+
+.wp-atc-layout-image_background .wp-atc-notification-close:hover {
+    color: #ffffff;
+    opacity: 0.8;
+}
+
+.wp-atc-notification-title {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.wp-atc-layout-image_background .wp-atc-notification-title {
+    color: #ffffff;
+}
+
+.wp-atc-notification-product-name {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.wp-atc-layout-image_background .wp-atc-notification-product-name {
+    color: #ffffff;
+}
+
+.wp-atc-notification-product-price {
+    margin: 0 0 15px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.wp-atc-layout-image_background .wp-atc-notification-product-price {
+    color: #ffffff;
+}
+
+.wp-atc-notification-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #000000;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.wp-atc-notification-button:hover {
+    background: #333333;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.wp-atc-layout-image_background .wp-atc-notification-button {
+    background: #ffffff;
+    color: #000000;
+}
+
+.wp-atc-layout-image_background .wp-atc-notification-button:hover {
+    background: #f5f5f5;
+    color: #000000;
+}
+
+/* Animations */
+@keyframes wpAtcSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.wp-atc-position-bottom {
+    animation-name: wpAtcSlideInBottom;
+}
+
+@keyframes wpAtcSlideInBottom {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.wp-atc-notification.hide {
+    animation: wpAtcSlideOut 0.3s ease-in forwards;
+}
+
+@keyframes wpAtcSlideOut {
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+.wp-atc-position-bottom.hide {
+    animation-name: wpAtcSlideOutBottom;
+}
+
+@keyframes wpAtcSlideOutBottom {
+    to {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .wp-atc-notification {
+        max-width: calc(100% - 40px);
+        width: calc(100% - 40px);
+        right: 20px;
+    }
+    
+    .wp-atc-notification-body {
+        gap: 12px;
+    }
+    
+    .wp-atc-layout-image_left .wp-atc-notification-image-wrapper {
+        width: 60px;
+        height: 60px;
+    }
+}
+
